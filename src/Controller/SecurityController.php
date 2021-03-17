@@ -34,4 +34,14 @@ class SecurityController extends AbstractController
             'last_username'=>$lastUsername
         ]);
     }
+
+
+    /**
+     * @Route ("/deconnexion",name="security_deconnexion")
+     */
+
+    public function deconnexion(){
+
+    }
+
 }
