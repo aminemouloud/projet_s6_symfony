@@ -30,6 +30,7 @@ class UE
     private $nomUe;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
      * @ManyToOne(targetEntity="Parcours")
 
      **/

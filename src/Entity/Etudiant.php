@@ -25,6 +25,8 @@ class Etudiant
     private $numEtudiant;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+
      * @ManyToOne(targetEntity="User")
      **/
     private $Utilisateur;

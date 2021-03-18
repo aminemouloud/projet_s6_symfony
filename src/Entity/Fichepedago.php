@@ -20,11 +20,13 @@ class Fichepedago
     private $idFiche;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
      * @ManyToOne(targetEntity="Etudiant")
      **/
     private $Etudiant;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
      * @ManyToOne(targetEntity="Semestre")
      **/
     private $Semestre;
