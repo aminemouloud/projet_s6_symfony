@@ -36,12 +36,7 @@ class UE
      **/
     private $Parcours;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @ManyToOne(targetEntity="UE")
 
-     **/
-    private $idFiche;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -55,20 +50,8 @@ class UE
      */
     private $ects;
 
-    /**
-     * @ORM\Column(type="boolean", length=255, nullable=true)
-     */
-    private $presenceoblige;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $inscription;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $note;
 
     public function getId(): ?int
     {
@@ -92,9 +75,6 @@ class UE
     }
 
 
-
-
-
     public function getEcts(): ?string
     {
         return $this->ects;
@@ -107,41 +87,7 @@ class UE
         return $this;
     }
 
-    public function getPresenceoblige(): ?string
-    {
-        return $this->presenceoblige;
-    }
 
-    public function setPresenceoblige(?string $presenceoblige): self
-    {
-        $this->presenceoblige = $presenceoblige;
-
-        return $this;
-    }
-
-    public function getInscription(): ?bool
-    {
-        return $this->inscription;
-    }
-
-    public function setInscription(?bool $inscription): self
-    {
-        $this->inscription = $inscription;
-
-        return $this;
-    }
-
-    public function getNote(): ?string
-    {
-        return $this->note;
-    }
-
-    public function setNote(?string $note): self
-    {
-        $this->note = $note;
-
-        return $this;
-    }
 
     /**
      * @return mixed
@@ -199,21 +145,6 @@ class UE
         $this->semestre = $semestre;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdFiche()
-    {
-        return $this->idFiche;
-    }
-
-    /**
-     * @param mixed $idFiche
-     */
-    public function setIdFiche($idFiche): void
-    {
-        $this->idFiche = $idFiche;
-    }
 
 
 

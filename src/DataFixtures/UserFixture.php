@@ -135,7 +135,14 @@ class UserFixture extends Fixture
         $ue->setCodeUe('javaS5');
         $ue->setNomUe('prog avancee java');
         $ue->setEcts('4');
-        $ue->setPresenceoblige(true);
+        //ue1 miage s1
+
+        $ue1= new UE();
+        $ue1->setParcours($parcours1S1->getNomParcours());
+        $ue1->setSemestre($semestre->getNumSemestre());
+        $ue1->setCodeUe('COMPT_GEST');
+        $ue1->setNomUe('comptabilite et gestion');
+        $ue1->setEcts('3');
         //ue3  miage s1
         $ue3= new UE();
         $ue3->setParcours($parcours1S1->getNomParcours());
@@ -143,7 +150,6 @@ class UserFixture extends Fixture
         $ue3->setCodeUe('SI S5');
         $ue3->setNomUe('systeme d_information');
         $ue3->setEcts('5');
-        $ue3->setPresenceoblige(true);
 // UE4 MIAGE S2
         $ue4= new UE();
         $ue4->setParcours($parcours1S2->getNomParcours());
@@ -151,7 +157,6 @@ class UserFixture extends Fixture
         $ue4->setCodeUe('ProgNT');
         $ue4->setNomUe('programmation n_tiers');
         $ue4->setEcts('6');
-        $ue4->setPresenceoblige(true);
 
         // UE5 MIAGE S2
         $ue5= new UE();
@@ -160,7 +165,6 @@ class UserFixture extends Fixture
         $ue5->setCodeUe('FMWEB_s5');
         $ue5->setNomUe('FRAMEWORK WEB ');
         $ue5->setEcts('3');
-        $ue5->setPresenceoblige(true);
 
         // UE6 inge S1
         $ue6= new UE();
@@ -169,7 +173,6 @@ class UserFixture extends Fixture
         $ue6->setCodeUe('PROG C/C++');
         $ue6->setNomUe('programmation c et c++ ');
         $ue6->setEcts('5');
-        $ue6->setPresenceoblige(true);
 
         // UE7 inge S1
         $ue7= new UE();
@@ -178,7 +181,6 @@ class UserFixture extends Fixture
         $ue7->setCodeUe('lang alg');
         $ue7->setNomUe('langage algebriques');
         $ue7->setEcts('4');
-        $ue7->setPresenceoblige(true);
 
         // UE8 inge S2
         $ue8= new UE();
@@ -187,7 +189,6 @@ class UserFixture extends Fixture
         $ue8->setCodeUe('PROG logique');
         $ue8->setNomUe('programmation logique ');
         $ue8->setEcts('5');
-        $ue8->setPresenceoblige(true);
 
         // UE9 inge S2
         $ue9= new UE();
@@ -196,12 +197,6 @@ class UserFixture extends Fixture
         $ue9->setCodeUe('Proj_ING_s6');
         $ue9->setNomUe('projet informatique INGE s6 ');
         $ue9->setEcts('5');
-        $ue9->setPresenceoblige(true);
-
-
-
-
-
 
 
 
@@ -230,6 +225,8 @@ class UserFixture extends Fixture
         $manager->persist($parcours2S2);
 
         $manager->persist($ue);
+        $manager->persist($ue1);
+
         $manager->persist($ue3);
         $manager->persist($ue4);
         $manager->persist($ue5);
