@@ -128,7 +128,7 @@ class UserFixture extends Fixture
 
 
         //instance de UE parcours miage
-
+    //ue miage s1
         $ue= new UE();
         $ue->setParcours($parcours1S1->getNomParcours());
         $ue->setSemestre($semestre->getNumSemestre());
@@ -136,18 +136,83 @@ class UserFixture extends Fixture
         $ue->setNomUe('prog avancee java');
         $ue->setEcts('4');
         $ue->setPresenceoblige(true);
+        //ue3  miage s1
+        $ue3= new UE();
+        $ue3->setParcours($parcours1S1->getNomParcours());
+        $ue3->setSemestre($semestre->getNumSemestre());
+        $ue3->setCodeUe('SI S5');
+        $ue3->setNomUe('systeme d_information');
+        $ue3->setEcts('5');
+        $ue3->setPresenceoblige(true);
+// UE4 MIAGE S2
+        $ue4= new UE();
+        $ue4->setParcours($parcours1S2->getNomParcours());
+        $ue4->setSemestre($semestre2->getNumSemestre());
+        $ue4->setCodeUe('ProgNT');
+        $ue4->setNomUe('programmation n_tiers');
+        $ue4->setEcts('6');
+        $ue4->setPresenceoblige(true);
+
+        // UE5 MIAGE S2
+        $ue5= new UE();
+        $ue5->setParcours($parcours1S2->getNomParcours());
+        $ue5->setSemestre($semestre2->getNumSemestre());
+        $ue5->setCodeUe('FMWEB_s5');
+        $ue5->setNomUe('FRAMEWORK WEB ');
+        $ue5->setEcts('3');
+        $ue5->setPresenceoblige(true);
+
+        // UE6 inge S1
+        $ue6= new UE();
+        $ue6->setParcours($parcours2S1->getNomParcours());
+        $ue6->setSemestre($semestre->getNumSemestre());
+        $ue6->setCodeUe('PROG C/C++');
+        $ue6->setNomUe('programmation c et c++ ');
+        $ue6->setEcts('5');
+        $ue6->setPresenceoblige(true);
+
+        // UE7 inge S1
+        $ue7= new UE();
+        $ue7->setParcours($parcours2S1->getNomParcours());
+        $ue7->setSemestre($semestre->getNumSemestre());
+        $ue7->setCodeUe('lang alg');
+        $ue7->setNomUe('langage algebriques');
+        $ue7->setEcts('4');
+        $ue7->setPresenceoblige(true);
+
+        // UE8 inge S2
+        $ue8= new UE();
+        $ue8->setParcours($parcours2S2->getNomParcours());
+        $ue8->setSemestre($semestre2->getNumSemestre());
+        $ue8->setCodeUe('PROG logique');
+        $ue8->setNomUe('programmation logique ');
+        $ue8->setEcts('5');
+        $ue8->setPresenceoblige(true);
+
+        // UE9 inge S2
+        $ue9= new UE();
+        $ue9->setParcours($parcours2S2->getNomParcours());
+        $ue9->setSemestre($semestre2->getNumSemestre());
+        $ue9->setCodeUe('Proj_ING_s6');
+        $ue9->setNomUe('projet informatique INGE s6 ');
+        $ue9->setEcts('5');
+        $ue9->setPresenceoblige(true);
+
+
+
+
+
+
+
+
+
+
+
 
         //$ue->setInscription(true);
         //$ue->setNote(13);
 
-        //instance de UE parcours inge
-        $ue2= new UE();
-        $ue2->setParcours($parcours1S1->getNomParcours());
-        $ue2->setSemestre($semestre->getNumSemestre());
-        $ue2->setCodeUe('ana algo S5');
-        $ue2->setNomUe('analyse des algorithmes S5');
-        $ue2->setEcts('4');
-        $ue2->setPresenceoblige(true);
+
 
         //$ue2->setInscription(true);
         //$ue->setNote(12);
@@ -164,9 +229,16 @@ class UserFixture extends Fixture
         $manager->persist($parcours2S1);
         $manager->persist($parcours2S2);
 
-
         $manager->persist($ue);
-        $manager->persist($ue2);
+        $manager->persist($ue3);
+        $manager->persist($ue4);
+        $manager->persist($ue5);
+        $manager->persist($ue6);
+        $manager->persist($ue7);
+        $manager->persist($ue8);
+        $manager->persist($ue9);
+
+
         $manager->persist($semestre2);
 
 

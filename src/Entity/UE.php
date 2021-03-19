@@ -38,6 +38,13 @@ class UE
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @ManyToOne(targetEntity="UE")
+
+     **/
+    private $idFiche;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @ManyToOne(targetEntity="Semestre")
      **/
     private $semestre;
@@ -190,6 +197,22 @@ class UE
     public function setSemestre($semestre): void
     {
         $this->semestre = $semestre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdFiche()
+    {
+        return $this->idFiche;
+    }
+
+    /**
+     * @param mixed $idFiche
+     */
+    public function setIdFiche($idFiche): void
+    {
+        $this->idFiche = $idFiche;
     }
 
 
