@@ -20,7 +20,7 @@ class Parcours
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nomParcours;
 
@@ -29,7 +29,7 @@ class Parcours
         return $this->id;
     }
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @ManyToOne(targetEntity="Semestre")
      **/
     private $Semestre;

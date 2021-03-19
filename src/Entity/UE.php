@@ -30,11 +30,18 @@ class UE
     private $nomUe;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @ManyToOne(targetEntity="Parcours")
 
      **/
     private $Parcours;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ManyToOne(targetEntity="Semestre")
+     **/
+    private $semestre;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -167,6 +174,22 @@ class UE
     public function setParcours($Parcours): void
     {
         $this->Parcours = $Parcours;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSemestre()
+    {
+        return $this->semestre;
+    }
+
+    /**
+     * @param mixed $semestre
+     */
+    public function setSemestre($semestre): void
+    {
+        $this->semestre = $semestre;
     }
 
 

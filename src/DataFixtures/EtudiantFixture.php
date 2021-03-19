@@ -19,9 +19,9 @@ class EtudiantFixture extends Fixture
         $fichePedago->setE
         $fichePedago->setNomParcours('MIAGE');
         $manager->persist($fichePedago);
-        $manager->flush();
+        $manager->flush();*/
 
-*/
+
 
     }
 }

@@ -20,16 +20,23 @@ class Fichepedago
     private $idFiche;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @ManyToOne(targetEntity="Etudiant")
      **/
     private $Etudiant;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @ManyToOne(targetEntity="Semestre")
      **/
     private $Semestre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ManyToOne(targetEntity="Parcours")
+
+     **/
+    private $parcours;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -146,6 +153,22 @@ class Fichepedago
     public function setSemestre($Semestre): void
     {
         $this->Semestre = $Semestre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParcours()
+    {
+        return $this->parcours;
+    }
+
+    /**
+     * @param mixed $parcours
+     */
+    public function setParcours($parcours): void
+    {
+        $this->parcours = $parcours;
     }
 
 

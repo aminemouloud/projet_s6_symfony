@@ -11,7 +11,7 @@ class SemestreFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $debut= new \DateTime('2020-09-01');
+        /*$debut= new \DateTime('2020-09-01');
         $fin= new \DateTime('2021-01-01');
 
         $semestre= new Semestre();
@@ -24,6 +24,6 @@ class SemestreFixture extends Fixture
         $manager->flush();
 
 
-        $manager->flush();
+        $manager->flush();*/
     }
 }

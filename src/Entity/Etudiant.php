@@ -20,12 +20,12 @@ class Etudiant
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $numEtudiant;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true,unique=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
 
      * @ManyToOne(targetEntity="User")
      **/
@@ -72,7 +72,7 @@ class Etudiant
     private $semestreObtenu;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $adresse;
 
@@ -194,17 +194,26 @@ class Etudiant
         return $this;
     }
 
-    public function getAdresse(): ?string
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
     {
-        return $this->Adresse;
+        return $this->adresse;
     }
 
-    public function setAdresse(?string $Adresse): self
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse): void
     {
-        $this->Adresse = $Adresse;
-
-        return $this;
+        $this->adresse = $adresse;
     }
+
+
+
+
+
 
     public function getEmail(): ?string
     {
