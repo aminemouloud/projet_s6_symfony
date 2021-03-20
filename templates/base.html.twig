@@ -14,6 +14,14 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <a class="nav-link" href="{{ path('etudiant_create') }}"> remplir info etudiant</a>
+    <h1>remplir  les informations de  etudiant</h1>
+
+    {#
+//pour afficher tt les etudiants
+    <a class="nav-link" href="{{ path('etudiant_create') }}"> creer un etudiant</a>
+
+#}
+    {% block body %}{% endblock %}
     </body>
 </html>
