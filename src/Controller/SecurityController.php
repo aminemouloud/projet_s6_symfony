@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Fichepedago;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
@@ -78,7 +79,6 @@ class SecurityController extends AbstractController
         $etudiant= new Etudiant();
         $utilisateur=$this->token->getToken()->getUser()->getUsername();
 
-
         $form=$this->createFormBuilder($etudiant)
 
             ->add('utilisateur',       TextType::class, array(
@@ -101,43 +101,17 @@ class SecurityController extends AbstractController
             ->add('enregistrer',SubmitType::class,[
                 'label'=>'Enregistrer'
             ])
-            ->getForm();
 
-
-        $etudiant= new Etudiant();
-        $utilisateur=$this->token->getToken()->getUser()->getUsername();
-
-
-        $form=$this->createFormBuilder($etudiant)
-
-            ->add('utilisateur',       TextType::class, array(
-                'attr' => array(
-                    'readonly value' =>$utilisateur,
-                )))
-
-            ->add('numEtudiant')
-            //->add('Utilisateur')
-            ->add('nom')
-            ->add('prenom')
-            ->add('DNN')
-            ->add('RSE')
-            ->add('redoublant')
-            ->add('tiersTemps')
-            ->add('ajac')
-            ->add('semestreObtenu')
-            ->add('adresse')
-            ->add('email')
-            ->add('enregistrer',SubmitType::class,[
-                'label'=>'Enregistrer'
-            ])
             ->getForm();
 
 
         $form->handleRequest($request);
         dump($etudiant);
 
+
         if($form->isSubmitted() && $form->isValid()) {
         $manager->persist($etudiant);
+
         $manager->flush();
 
         return $this->redirectToRoute('etudiant_show',['id'=>
