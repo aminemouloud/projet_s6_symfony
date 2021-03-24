@@ -24,11 +24,10 @@ class ChoixUE
      */
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @ManyToOne(targetEntity="ue")
+     * @ORM\Column(type="json", nullable=true)
 
      **/
-    private $nomUe;
+    private $ue = [];
 
     /**
      * @ORM\Column(type="boolean", length=255, nullable=true)
@@ -94,6 +93,21 @@ class ChoixUE
         $this->idFiche = $idFiche;
     }
 
+    /**
+     * @return array
+     */
+    public function getUe(): array
+    {
+        return $this->ue;
+    }
+
+    /**
+     * @param array $ue
+     */
+    public function setUe(array $ue): void
+    {
+        $this->ue = $ue;
+    }
 
 
 

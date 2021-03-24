@@ -2,13 +2,23 @@
 
 namespace App\Controller;
 
+use App\Entity\ChoixUE;
 use App\Entity\Fichepedago;
+use App\Entity\UE;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+
+
+
 
 use App\Entity\User;
 
@@ -34,11 +44,6 @@ class SecurityController extends AbstractController
     {
         $this->token = $token;
     }
-
-
-
-
-
 
 
 
@@ -120,7 +125,7 @@ class SecurityController extends AbstractController
         ]);
         }
 
-        return $this->render('site/create.html.twig', [
+        return $this->render('site/createEtudiant.html.twig', [
             'formEtudiant'=>$form->createView()
         ]);
 
@@ -131,10 +136,154 @@ class SecurityController extends AbstractController
      * @Route ("/etudiant/{id}",name="etudiant_show")
      */
 
-    public function show(Etudiant $etudiant){
-        return $this->render('site/show.html.twig',[
+    public function showEtudiant(Etudiant $etudiant){
+        return $this->render('site/showEtudiant.html.twig',[
             'etudiant'=>$etudiant
         ]);
     }
+
+
+    /**
+     * @Route ("/fiche/new",name="fiche_create")
+     */
+
+    public function createFiche(Request $request,EntityManagerInterface $manager){
+        $fiche= new Fichepedago();
+        $form1=$this->createFormBuilder($fiche)
+
+            ->add('Etudiant')
+            ->add('Semestre', ChoiceType::class, [
+                'choices'  => [
+                    '1' => '1',
+                    '2' => '2',
+                ],
+            ])
+            ->add('parcours')
+            ->add('parcours', ChoiceType::class, [
+                'choices'  => [
+                    'MIAGE' => 'MIAGE',
+                    'INGE' => 'INGE',
+                ],
+            ])
+
+            ->add('rempli',       NumberType::class, array(
+                'attr' => array(
+                    ' value' =>1,
+                )))
+            ->add('valide',       NumberType::class, array(
+                'attr' => array(
+                    'readonly value' =>0,
+                )))
+            ->add('transmise',       NumberType::class, array(
+                'attr' => array(
+                    'readonly value' =>0,
+                )))
+            ->add('annee',       TextType::class, array(
+                'attr' => array(
+                    'readonly value' =>"2021",
+                )))
+            ->add('enregistrer',SubmitType::class,[
+                'label'=>'Enregistrer'
+            ])
+
+            ->getForm();
+
+        $form1->handleRequest($request);
+        dump($fiche);
+
+
+        if($form1->isSubmitted() && $form1->isValid()) {
+            $manager->persist($fiche);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('fiche_show',['id'=>
+                $fiche->getId()
+
+            ]);
+        }
+
+        return $this->render('site/createFiche.html.twig', [
+            'formFiche'=>$form1->createView()
+        ]);
+
+
+    }
+
+
+    /**
+     * @Route ("/fiche/{id}",name="fiche_show")
+     */
+
+    public function showFiche(Fiche $fiche){
+        return $this->render('site/showFiche.html.twig',[
+            'fiche'=>$fiche
+        ]);
+    }
+
+    /**
+     * @Route ("/ue",name="ue_create")
+     */
+
+    public function createUE(Request $request,EntityManagerInterface $manager){
+        $choixUe= new ChoixUE();
+        $form2=$this->createFormBuilder($choixUe)
+
+            ->add('ue', EntityType::class, [
+                'class' => UE::class,
+                'multiple' => true,
+
+                'choice_label' => 'nomUe',
+
+            ])
+
+            ->add('inscription')
+            ->add('note')
+            ->add('idFiche')
+            ->add('enregistrer',SubmitType::class,[
+                'label'=>'Enregistrer'
+            ])
+
+            ->getForm();
+
+        $form2->handleRequest($request);
+        dump($choixUe);
+
+
+        if($form2->isSubmitted() && $form2->isValid()) {
+            $manager->persist($choixUe);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('choixUE_show',['id'=>
+                $choixUe->getId()
+
+            ]);
+        }
+
+        return $this->render('site/createUE.html.twig', [
+            'formChoixUE'=>$form2->createView()
+        ]);
+
+
+    }
+
+
+
+    /**
+     * @Route ("/ue/{id}",name="choixUE_show")
+     */
+
+    public function showUE(ChoixUE $choixUE){
+        return $this->render('site/showUE.html.twig',[
+            'choixUE'=>$choixUE
+        ]);
+    }
+
+
+
+
+
+
 
 }
